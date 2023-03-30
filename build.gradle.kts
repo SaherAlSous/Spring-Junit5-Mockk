@@ -18,7 +18,8 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	testImplementation("org.springframework.boot:spring-boot-starter-test"){
+	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+		because("Kotlin has its own Mock implementation")
 		exclude(module = "junit")
 		exclude(module = "mockito-core")
 	}
