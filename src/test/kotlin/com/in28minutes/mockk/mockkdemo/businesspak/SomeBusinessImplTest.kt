@@ -1,9 +1,10 @@
 package com.in28minutes.mockk.mockkdemo.businesspak
 
-import io.mockk.every
+import com.in28minutes.mockk.mockkdemo.list.ListTest
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockk
+import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -24,6 +25,14 @@ class SomeBusinessImplTest {
             dataService = mockk<DataService>()
             someBusinessImpl = SomeBusinessImpl(dataService)
         }
+
+        @JvmStatic
+        @AfterAll
+        fun `Clear and UnMock All`() {
+            clearMocks(dataService)
+            unmockkAll()
+        }
+
     }
 
     @Test
